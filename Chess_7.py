@@ -1414,7 +1414,7 @@ class Socket:
 
 class Server(Game):
 
-    IP = '192.168.1.9' #IP of the local machine that clients will connect to and server will be bound to
+    IP = '0.0.0.0' #IP of the local machine that clients will connect to and server will be bound to
     PORT = 1234 #port of local machine
     HEADERSIZE = 10 #buffer for data // see self.recv_msg()
 
@@ -1425,7 +1425,7 @@ class Server(Game):
         self.server = Socket(self.server, 0)
         self.server.socket.setsockopt(s.SOL_SOCKET, s.SO_REUSEADDR, 1) #configuring socket
         self.server.socket.bind((Server.IP, Server.PORT)) #binding the server to a specific IP and PORT
-        self.server.socket.listen(100) #how many connections can be handled (backlogged) at once
+        self.server.socket.listen(5) #how many connections can be handled (backlogged) at once
         self.connections = [self.server] #List of connections on local machine. 1 server and 2 clients
         print ('server socket intialized')
         while len(self.connections) < 3: #2 players required to play
@@ -1619,7 +1619,7 @@ class Client:
     def __init__(self):
         print ('initializing client')
         self.client_socket = s.socket(s.AF_INET, s.SOCK_STREAM)
-        self.client_socket.connect((Server.IP, Server.PORT))
+        self.client_socket.connect((my_servers_ip, Server.PORT))
         self.client_socket.setblocking(True)
         self.board = None
         self.moves = None
