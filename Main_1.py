@@ -1,8 +1,7 @@
 """
 TODO
     SOCKETS
-        Server needs to send message to the client. Client only sends if recv from server
-        handle early closed connections
+        Connect from a remote machine
 TODO
     Minimax
         Time deduction for AI
@@ -23,7 +22,7 @@ TODO
     Training, Tutorial??
 """
 
-from Chess_6 import *
+from Chess_7 import *
 standard_game = Standard(Chessboard('codes/FEN/setup.txt'))
 KOTH_game = KOTH(Chessboard('codes/FEN/setup.txt'))
 random_game = Random_AI(Chessboard('codes/FEN/setup.txt'))
